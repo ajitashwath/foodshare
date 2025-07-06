@@ -71,12 +71,24 @@ const Header = () => {
             </a>
           </nav>
           <div className="flex space-x-4">
-            <button className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors">
+            <a
+              href="#get-involved"
+              className="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
+            >
               Donate
-            </button>
-            <button className="border border-green-600 text-green-600 px-6 py-2 rounded-lg hover:bg-green-600 hover:text-white transition-colors">
+            </a>
+            <a
+              href="/signup"
+              className="border border-green-600 text-green-600 px-6 py-2 rounded-lg hover:bg-green-600 hover:text-white transition-colors"
+            >
+              Sign Up
+            </a>
+            <a
+              href="/login"
+              className="border border-green-600 text-green-600 px-6 py-2 rounded-lg hover:bg-green-600 hover:text-white transition-colors"
+            >
               Partner Login
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -120,13 +132,19 @@ const HeroSection = () => {
             with grocers, wholesalers, and farmers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center">
+            <a
+              href="#about"
+              className="bg-green-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
+            >
               Support Our Mission
               <ArrowRight className="ml-2" />
-            </button>
-            <button className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 hover:text-white transition-colors">
+            </a>
+            <a
+              href="#get-involved"
+              className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 hover:text-white transition-colors"
+            >
               Donate Surplus Food
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
@@ -162,9 +180,12 @@ const MissionSection = () => {
             businesses and redistributes it to local hunger relief
             organizations.
           </p>
-          <button className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors">
+          <a
+            href="#get-involved"
+            className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
+          >
             Help us close the gap
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
@@ -290,9 +311,12 @@ const ImpactSection = () => {
             waste. And impact shouldn't be a mystery.
           </p>
 
-          <button className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors">
+          <a
+            href="#get-involved"
+            className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
+          >
             Learn About our Impact
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
@@ -304,7 +328,7 @@ const SupportSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
   return (
-    <section className="py-20 bg-gray-900 text-white">
+    <section id="get-involved" className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-4">
         <motion.div
           ref={ref}
@@ -334,9 +358,12 @@ const SupportSection = () => {
               goes directly towards transportation and logistics to feed people
               in need. We keep our costs low so every dollar makes a big impact.
             </p>
-            <button className="bg-white text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors">
+            <a
+              href="#contact"
+              className="bg-white text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
+            >
               Donate Now
-            </button>
+            </a>
           </div>
         </motion.div>
       </div>
