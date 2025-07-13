@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Heart, Users, HandHeart, ArrowRight, Phone, Mail, MapPin, Globe } from 'lucide-react';
 
@@ -316,4 +318,3 @@ const FoodSharePartnership: React.FC = () => {
   );
 };
 
-export default FoodSharePartnership;

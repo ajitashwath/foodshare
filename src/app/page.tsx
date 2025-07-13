@@ -14,6 +14,8 @@ import {
   Instagram,
   Facebook,
   Twitter,
+  HandHeart,
+  Globe,
 } from "lucide-react";
 
 // Header Component
@@ -56,6 +58,12 @@ const Header = () => {
               className="text-black hover:text-green-600 transition-colors"
             >
               What We Do
+            </a>
+            <a
+              href="/partnership"
+              className="text-black hover:text-green-600 transition-colors"
+            >
+              Partnerships
             </a>
             <a
               href="#get-involved"
@@ -273,6 +281,185 @@ const ServicesSection = () => {
   );
 };
 
+// Partnership Section
+const PartnershipSection = () => {
+  const [ref, inView] = useInView({ triggerOnce: true });
+
+  const ngos = [
+    {
+      id: 'heeals',
+      name: 'HEEALS NGO',
+      description: 'Health, Education, Environment And Livelihood Society - A grassroots registered non-profit transforming lives through innovative initiatives in public health, education, WASH, menstrual hygiene, mental health, and environmental sustainability.',
+      website: 'http://heeals.org/',
+      logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+      contact: {
+        email: 'communications@heeals.org',
+        phone: '+91-7982316660',
+        address: '#692, Sector 22-B, Gurgaon-122015, Haryana (India)'
+      },
+      focus: ['Public Health', 'Education & Livelihood', 'WASH', 'Menstrual Hygiene', 'Mental Health', 'Environmental Sustainability']
+    },
+    {
+      id: 'punjabi-samvad',
+      name: 'Punjabi Samvad NGO',
+      description: 'A social organization operating since 2004, dedicated to women empowerment, child welfare, cultural preservation, and social awareness. Based in Amritsar, Punjab, working towards community growth and development.',
+      website: 'https://www.google.com/search?client=ms-android-samsung-rvo1&sca_esv=ee54a96be2d12d25&hl=en-IN&cs=0&sxsrf=AE3TifM7oLreio-UJpGoWu0OIuyYeJUNAA%3A1752236783803&kgmid=%2Fg%2F11r4x9lw6f&q=Punjabi%20Samvad%20NGO&shndl=30&shem=lccpse&source=sh%2Fx%2Floc%2Fact%2Fm1%2F4&kgs=446c5cf37e926421',
+      logo: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==',
+      contact: {
+        email: 'info@punjabisamvad.org',
+        phone: '+91-XXX-XXX-XXXX',
+        address: 'Amritsar, Punjab'
+      },
+      focus: ['Women Empowerment', 'Child Welfare', 'Cultural Preservation', 'Social Awareness', 'Education', 'Vocational Skills']
+    }
+  ];
+
+  return (
+    <section id="partnerships" className="py-20 bg-gradient-to-br from-blue-50 to-indigo-100">
+      <div className="container mx-auto px-4">
+        <motion.div
+          ref={ref}
+          initial={{ opacity: 0, y: 50 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Header */}
+          <div className="text-center mb-16">
+            <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-6">
+              <HandHeart className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+              Building Partnerships for Food Security
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              Together with our NGO partners, we're creating a sustainable network to combat food waste and hunger across India.
+            </p>
+          </div>
+
+          {/* Food Safety Guidelines */}
+          <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
+            <div className="flex items-center mb-6">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                <span className="text-blue-600 font-bold">🛡️</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-800">Food Safety Guidelines</h3>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                'Food must be within expiry date',
+                'Prepared food should be donated within 2 hours',
+                'Keep food at proper temperature',
+                'Package food securely',
+                'Label with preparation time if applicable'
+              ].map((guideline, index) => (
+                <div key={index} className="flex items-start">
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <span className="text-gray-700">{guideline}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Partner NGOs */}
+          <div className="mb-12">
+            <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">Our Partner NGOs</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              {ngos.map((ngo) => (
+                <div key={ngo.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                  <div className="flex items-center mb-4">
+                    <img 
+                      src={ngo.logo} 
+                      alt={`${ngo.name} Logo`} 
+                      className="w-16 h-16 rounded-full mr-4 bg-gray-200"
+                    />
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-800">{ngo.name}</h4>
+                      <a 
+                        href={ngo.website} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
+                      >
+                        <Globe className="w-4 h-4 mr-1" />
+                        Visit Website
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-4">{ngo.description}</p>
+                  
+                  <div className="mb-4">
+                    <h5 className="font-semibold text-gray-800 mb-2">Focus Areas:</h5>
+                    <div className="flex flex-wrap gap-2">
+                      {ngo.focus.map((area, index) => (
+                        <span 
+                          key={index}
+                          className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    {ngo.contact.email && (
+                      <div className="flex items-center text-gray-600">
+                        <Mail className="w-4 h-4 mr-2" />
+                        <span className="text-sm">{ngo.contact.email}</span>
+                      </div>
+                    )}
+                    {ngo.contact.phone && (
+                      <div className="flex items-center text-gray-600">
+                        <Phone className="w-4 h-4 mr-2" />
+                        <span className="text-sm">{ngo.contact.phone}</span>
+                      </div>
+                    )}
+                    {ngo.contact.address && (
+                      <div className="flex items-center text-gray-600">
+                        <MapPin className="w-4 h-4 mr-2" />
+                        <span className="text-sm">{ngo.contact.address}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* How Partnership Works */}
+          <div className="bg-white rounded-xl shadow-lg p-8">
+            <h3 className="text-3xl font-bold text-gray-800 mb-8 text-center">How Our Partnership Works</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold">1</span>
+                </div>
+                <h4 className="font-semibold text-gray-800 mb-2">Food Collection</h4>
+                <p className="text-gray-600">Partner NGOs identify surplus food from restaurants, events, and households through our AI platform.</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold">2</span>
+                </div>
+                <h4 className="font-semibold text-gray-800 mb-2">Quality Assessment</h4>
+                <p className="text-gray-600">Our partners ensure all donated food meets safety standards before distribution.</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-xl font-bold">3</span>
+                </div>
+                <h4 className="font-semibold text-gray-800 mb-2">Distribution</h4>
+                <p className="text-gray-600">Food reaches those in need through established community networks and distribution centers.</p>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 // Impact Section
 const ImpactSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
@@ -365,13 +552,28 @@ const SupportSection = () => {
               Donate Now
             </a>
           </div>
+
+          {/* Call to Action for Partnerships */}
+          <div className="bg-gradient-to-r from-blue-600 to-teal-600 rounded-xl p-8 text-center text-white">
+            <h3 className="text-2xl font-bold mb-4">Join Our Mission</h3>
+            <p className="text-lg mb-6">
+              Together, we can create a world where no food goes to waste and no one goes hungry.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+                Become a Partner
+              </button>
+              <button className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
+                Learn More
+              </button>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
 
-// Contact Section
 const ContactSection = () => {
   const [ref, inView] = useInView({ triggerOnce: true });
 
