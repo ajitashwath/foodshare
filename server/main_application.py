@@ -5,8 +5,7 @@ import os
 import logging
 from datetime import datetime
 
-# Import custom modules
-from config import get_config, Config
+from server.config import get_config, Config
 from ai_routes import create_ai_routes
 from partnership_routes import create_partnership_routes
 from database_setup import setup_database_tables, seed_sample_data

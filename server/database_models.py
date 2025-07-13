@@ -4,9 +4,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 def setup_database_tables(supabase: Client):
-    """Setup database tables in Supabase"""
-    
-    # SQL commands to create tables
     create_tables_sql = [
         """
         CREATE TABLE IF NOT EXISTS donation_logs (
