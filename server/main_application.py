@@ -280,7 +280,7 @@ if __name__ == '__main__':
     
     # Run application
     app.run(
-        host='0.0.0.0',
+        host='127.0.0.0',
         port=int(os.getenv('PORT', 5000)),
         debug=app.config['DEBUG']
     )

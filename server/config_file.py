@@ -18,18 +18,6 @@ class Config:
     
     # Frontend URLs (for CORS and redirects)
     FRONTEND_MAIN_URL = os.getenv('FRONTEND_MAIN_URL', 'http://localhost:3000')
-    FRONTEND_AI_URL = os.getenv('FRONTEND_AI_URL', 'http://localhost:3001')
-    FRONTEND_PARTNERSHIP_URL = os.getenv('FRONTEND_PARTNERSHIP_URL', 'http://localhost:3002')
-    
-    # CORS Configuration
-    CORS_ORIGINS = [
-        FRONTEND_MAIN_URL,
-        FRONTEND_AI_URL,
-        FRONTEND_PARTNERSHIP_URL,
-        'http://localhost:3000',
-        'http://localhost:3001',
-        'http://localhost:3002'
-    ]
     
     # Database Configuration
     DATABASE_URL = SUPABASE_URL
