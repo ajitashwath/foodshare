@@ -136,7 +136,7 @@ const HeroSection = () => {
           </h1>
           <p className="text-xl text-gray-100 mb-8 max-w-2xl drop-shadow">
             Food Share rescues and distributes more than{" "}
-            <strong>2,000,000 lbs. of food</strong> every week in partnership
+            <strong>2,000,000 kgs. of food</strong> every week in partnership
             with grocers, wholesalers, and farmers.
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -178,8 +178,8 @@ const MissionSection = () => {
             We bridge the gap between food waste and food scarcity
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            In the United States, nearly <strong>40% of food</strong> goes to
-            waste while 47 million Americans go hungry.
+            In the India, nearly <strong>40% of food</strong> goes to
+            waste while 190 million Indians go hungry.
             <strong> We believe food should be shared– not wasted.</strong>
           </p>
           <p className="text-lg text-gray-600 mb-8">
@@ -475,18 +475,18 @@ const ImpactSection = () => {
         >
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Over 2,000 distribution locations across 36 states
+              Over 2,000 distribution locations across 28 states
             </h2>
           </div>
 
           <div className="bg-green-50 p-12 rounded-2xl mb-12">
             <div className="stat-number mb-4">1,974,434</div>
             <p className="text-xl text-gray-600 mb-2">
-              pounds of food distributed so far
+              kilograms of food distributed so far
             </p>
-            <p className="text-sm text-gray-500">
+            {/* <p className="text-sm text-gray-500">
               (live data from app.foodshare.com)
-            </p>
+            </p> */}
           </div>
 
           <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
@@ -536,7 +536,7 @@ const SupportSection = () => {
 
           <div className="bg-green-600 p-12 rounded-2xl mb-8">
             <h3 className="text-3xl font-bold mb-4">
-              Giving $1 can provide 10 meals.
+              Giving Rs.100 can provide 10 meals.
             </h3>
             <p className="text-lg mb-6">
               All the food we rescue is donated — we just need to move it. That
@@ -647,13 +647,13 @@ const ContactSection = () => {
                     <Mail className="w-5 h-5 text-green-600" />
                     <span className="text-gray-600">info@foodshare.com</span>
                   </div>
-                  <div className="flex items-center space-x-3">
+                  {/* <div className="flex items-center space-x-3">
                     <Phone className="w-5 h-5 text-green-600" />
                     <span className="text-gray-600">(555) 123-4567</span>
-                  </div>
+                  </div> */}
                   <div className="flex items-center space-x-3">
                     <MapPin className="w-5 h-5 text-green-600" />
-                    <span className="text-gray-600">Philadelphia, PA</span>
+                    <span className="text-gray-600">Phagwara, Punjab</span>
                   </div>
                 </div>
               </div>
@@ -786,13 +786,13 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+        {/* <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
           <p>
             Sharing Excess is a registered 501(c)(3) nonprofit organization.
             Donations are tax-deductible. Nonprofit Tax ID/EIN: 86-2161466.
             "Sharing Excess" is a registered trademark, all rights reserved.
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );
