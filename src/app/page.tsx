@@ -1,5 +1,7 @@
 "use client";
 
+"use client";
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -148,7 +150,7 @@ const HeroSection = () => {
               <ArrowRight className="ml-2" />
             </a>
             <a
-              href="#get-involved"
+              href="/ai-chat"
               className="border-2 border-green-600 text-green-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 hover:text-white transition-colors"
             >
               Donate Surplus Food
@@ -189,7 +191,7 @@ const MissionSection = () => {
             organizations.
           </p>
           <a
-            href="#get-involved"
+            href="/ai-chat"
             className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
           >
             Help us close the gap
@@ -254,7 +256,7 @@ const ServicesSection = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                href="/ai-chat"
                 className="bg-white p-8 rounded-xl shadow-lg card-hover"
               >
                 <div
@@ -499,7 +501,7 @@ const ImpactSection = () => {
           </p>
 
           <a
-            href="#get-involved"
+            href="/ai-chat"
             className="bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-green-700 transition-colors"
           >
             Learn About our Impact
@@ -546,7 +548,7 @@ const SupportSection = () => {
               in need. We keep our costs low so every dollar makes a big impact.
             </p>
             <a
-              href="#contact"
+              href="/ai-chat"
               className="bg-white text-green-600 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-colors"
             >
               Donate Now
@@ -560,12 +562,12 @@ const SupportSection = () => {
               Together, we can create a world where no food goes to waste and no one goes hungry.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+              <a href="/signup" className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors text-center">
                 Become a Partner
-              </button>
-              <button className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors">
+              </a>
+              <a href="/partnership" className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-blue-600 transition-colors text-center">
                 Learn More
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

@@ -317,4 +317,3 @@ const FoodSharePartnership: React.FC = () => {
     </div>
   );
 };
-
