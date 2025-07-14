@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 // Demo credentials
 const DEMO_CREDENTIALS = {
   ngo: {
-    username: "ngo@demo.com",
+    username: "ngo@gmail.com",
     password: "ngo123",
     userData: {
       name: "Community Food Bank",
@@ -19,7 +19,7 @@ const DEMO_CREDENTIALS = {
     }
   },
   admin: {
-    username: "admin@demo.com",
+    username: "admin@gmail.com",
     password: "admin123",
     userData: {
       name: "Food Share Admin",
@@ -29,7 +29,7 @@ const DEMO_CREDENTIALS = {
     }
   },
   cafe: {
-    username: "cafe@demo.com",
+    username: "cafe@gmail.com",
     password: "cafe123",
     userData: {
       name: "Downtown Bistro",
