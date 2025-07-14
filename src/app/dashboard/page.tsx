@@ -15,15 +15,72 @@ import {
   Bell,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+type UserType = "ngo" | "admin" | "cafe";
+
+interface UserData {
+  name: string;
+  email: string;
+  phone: string;
+  address: string;
+}
 
 export default function DashboardPage() {
-  const [userType, setUserType] = useState<"ngo" | "admin" | "cafe">("ngo");
-  const [userData, setUserData] = useState({
+  const [userType, setUserType] = useState<UserType>("ngo");
+  const [userData, setUserData] = useState<UserData>({
     name: "Sample Organization",
     email: "sample@example.com",
     phone: "(555) 123-4567",
     address: "123 Main St, Philadelphia, PA",
   });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
+  // Check authentication on component mount
+  useEffect(() => {
+    const checkAuth = () => {
+      const auth = localStorage.getItem('isAuthenticated');
+      const storedUserType = localStorage.getItem('userType') as UserType;
+      const storedUserData = localStorage.getItem('userData');
+
+      if (auth === 'true' && storedUserType && storedUserData) {
+        setIsAuthenticated(true);
+        setUserType(storedUserType);
+        setUserData(JSON.parse(storedUserData));
+      } else {
+        router.push('/login');
+      }
+      setIsLoading(false);
+    };
+
+    checkAuth();
+  }, [router]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('userType');
+    localStorage.removeItem('userData');
+    router.push('/login');
+  };
+
+  // Show loading spinner while checking authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-8 h-8 border-4 border-green-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render dashboard if not authenticated
+  if (!isAuthenticated) {
+    return null;
+  }
 
   // Mock data - in real app this would come from API
   const dashboardData = {
@@ -207,13 +264,13 @@ export default function DashboardPage() {
               <button className="p-2 text-gray-400 hover:text-gray-600 transition-colors">
                 <Settings className="w-5 h-5" />
               </button>
-              <Link
-                href="/login"
+              <button
+                onClick={handleLogout}
                 className="flex items-center space-x-2 text-gray-600 hover:text-gray-800 transition-colors"
               >
                 <LogOut className="w-4 h-4" />
                 <span>Logout</span>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
@@ -251,6 +308,9 @@ export default function DashboardPage() {
               <button className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
                 Edit Profile
               </button>
+              <div className="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium capitalize">
+                {userType}
+              </div>
             </div>
           </div>
         </motion.div>

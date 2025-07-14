@@ -2,15 +2,53 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
+// Demo credentials
+const DEMO_CREDENTIALS = {
+  ngo: {
+    username: "ngo@demo.com",
+    password: "ngo123",
+    userData: {
+      name: "Community Food Bank",
+      email: "ngo@demo.com",
+      phone: "(555) 123-4567",
+      address: "123 Community St, Philadelphia, PA"
+    }
+  },
+  admin: {
+    username: "admin@demo.com",
+    password: "admin123",
+    userData: {
+      name: "Food Share Admin",
+      email: "admin@demo.com",
+      phone: "(555) 987-6543",
+      address: "456 Admin Plaza, Philadelphia, PA"
+    }
+  },
+  cafe: {
+    username: "cafe@demo.com",
+    password: "cafe123",
+    userData: {
+      name: "Downtown Bistro",
+      email: "cafe@demo.com",
+      phone: "(555) 246-8135",
+      address: "789 Main St, Philadelphia, PA"
+    }
+  }
+};
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
+  const router = useRouter();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -18,18 +56,52 @@ export default function LoginPage() {
       ...prev,
       [name]: value,
     }));
+    // Clear error when user starts typing
+    if (error) setError("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log("Login attempt:", formData);
+    setIsLoading(true);
+    setError("");
+
+    // Simulate loading delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // Check credentials
+    const credential = Object.entries(DEMO_CREDENTIALS).find(([_, cred]) => 
+      cred.username === formData.username && cred.password === formData.password
+    );
+
+    if (credential) {
+      const [userType, credData] = credential;
+      
+      // Store user data in localStorage for the dashboard
+      localStorage.setItem('userType', userType);
+      localStorage.setItem('userData', JSON.stringify(credData.userData));
+      localStorage.setItem('isAuthenticated', 'true');
+      
+      // Redirect to dashboard
+      router.push('/dashboard');
+    } else {
+      setError("Invalid username or password. Please try the demo credentials below.");
+    }
+    
+    setIsLoading(false);
+  };
+
+  const handleDemoLogin = (userType: keyof typeof DEMO_CREDENTIALS) => {
+    const cred = DEMO_CREDENTIALS[userType];
+    setFormData({
+      username: cred.username,
+      password: cred.password
+    });
+    setError("");
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center p-4">
       <div className="max-w-md w-full">
-        {/* Logo and Back to Home */}
         <div className="text-center mb-8">
           <Link href="/" className="inline-flex items-center space-x-3 mb-6">
             <img
@@ -49,10 +121,18 @@ export default function LoginPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="bg-white rounded-2xl shadow-xl p-8"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Error Message */}
+            {error && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center space-x-2">
+                <AlertCircle className="w-5 h-5 text-red-500" />
+                <span className="text-red-700 text-sm">{error}</span>
+              </div>
+            )}
+
             {/* Username Field */}
             <div>
               <label
@@ -69,7 +149,7 @@ export default function LoginPage() {
                   name="username"
                   value={formData.username}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900"
                   placeholder="Enter your username or email"
                   required
                 />
@@ -92,7 +172,7 @@ export default function LoginPage() {
                   name="password"
                   value={formData.password}
                   onChange={handleInputChange}
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent transition-colors text-gray-900"
                   placeholder="Enter your password"
                   required
                 />
@@ -130,10 +210,17 @@ export default function LoginPage() {
             {/* Login Button */}
             <button
               type="submit"
-              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center"
+              disabled={isLoading}
+              className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Sign In
-              <ArrowRight className="ml-2 w-5 h-5" />
+              {isLoading ? (
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              ) : (
+                <>
+                  Sign In
+                  <ArrowRight className="ml-2 w-5 h-5" />
+                </>
+              )}
             </button>
           </form>
 
