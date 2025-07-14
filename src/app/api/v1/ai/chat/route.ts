@@ -4,7 +4,8 @@ import { aiService } from '@/lib/ai-service';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const ipAddress = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'unknown';
 
     const response = await aiService.handleChat(body, ipAddress);
 

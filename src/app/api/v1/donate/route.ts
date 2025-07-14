@@ -23,9 +23,10 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const userId = body.user_id || uuidv4();
-    const ipAddress = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
 
-    // Log donation attempt
+    const forwardedFor = request.headers.get('x-forwarded-for');
+    const ipAddress = forwardedFor?.split(',')[0]?.trim() || 'unknown';
+
     const donationData = {
       user_id: userId,
       action: 'donate_initiated',
@@ -34,8 +35,8 @@ export async function POST(request: NextRequest) {
     };
 
     const { error } = await supabase
-      .table('donation_logs')
-      .insert(donationData);
+      .from('donation_logs')
+      .insert([donationData]);
 
     if (error) throw error;
 

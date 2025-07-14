@@ -1,8 +1,7 @@
 "use client";
 
-"use client";
-
 import { useState, useEffect } from "react";
+import Link from 'next/link';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -34,9 +33,8 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-lg" : "bg-transparent"
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -252,29 +250,28 @@ const ServicesSection = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                href="/ai-chat"
-                className="bg-white p-8 rounded-xl shadow-lg card-hover"
-              >
-                <div
-                  className={`${service.color} w-16 h-16 rounded-lg flex items-center justify-center mb-6 overflow-hidden relative`}
+              <Link href="/ai-chat" key={index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  className="bg-white p-8 rounded-xl shadow-lg card-hover cursor-pointer"
                 >
-                  <service.icon
-                    className={`w-8 h-8 text-white ${
-                      service.title === "Retail Rescue" ? "truck-move" : ""
-                    } ${service.title === "Direct Link" ? "heart-beat" : ""}`}
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
+                  <div
+                    className={`${service.color} w-16 h-16 rounded-lg flex items-center justify-center mb-6 overflow-hidden relative`}
+                  >
+                    <service.icon
+                      className={`w-8 h-8 text-white ${service.title === "Retail Rescue" ? "truck-move" : ""
+                        } ${service.title === "Direct Link" ? "heart-beat" : ""}`}
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {service.description}
+                  </p>
+                </motion.div>
+              </Link>
             ))}
           </div>
         </motion.div>
@@ -369,16 +366,16 @@ const PartnershipSection = () => {
               {ngos.map((ngo) => (
                 <div key={ngo.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-center mb-4">
-                    <img 
-                      src={ngo.logo} 
-                      alt={`${ngo.name} Logo`} 
+                    <img
+                      src={ngo.logo}
+                      alt={`${ngo.name} Logo`}
                       className="w-16 h-16 rounded-full mr-4 bg-gray-200"
                     />
                     <div>
                       <h4 className="text-xl font-bold text-gray-800">{ngo.name}</h4>
-                      <a 
-                        href={ngo.website} 
-                        target="_blank" 
+                      <a
+                        href={ngo.website}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="text-blue-600 hover:text-blue-800 text-sm flex items-center"
                       >
@@ -387,14 +384,14 @@ const PartnershipSection = () => {
                       </a>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mb-4">{ngo.description}</p>
-                  
+
                   <div className="mb-4">
                     <h5 className="font-semibold text-gray-800 mb-2">Focus Areas:</h5>
                     <div className="flex flex-wrap gap-2">
                       {ngo.focus.map((area, index) => (
-                        <span 
+                        <span
                           key={index}
                           className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm"
                         >
@@ -403,7 +400,7 @@ const PartnershipSection = () => {
                       ))}
                     </div>
                   </div>
-                  
+
                   <div className="space-y-2">
                     {ngo.contact.email && (
                       <div className="flex items-center text-gray-600">

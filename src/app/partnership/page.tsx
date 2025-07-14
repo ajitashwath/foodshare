@@ -17,7 +17,7 @@ interface NGO {
   focus: string[];
 }
 
-const FoodSharePartnership: React.FC = () => {
+const FoodSharePartnership = () => {
   const [activeTab, setActiveTab] = useState<string>('overview');
 
   const ngos: NGO[] = [
@@ -55,7 +55,7 @@ const FoodSharePartnership: React.FC = () => {
         <img 
           src={ngo.logo} 
           alt={`${ngo.name} Logo`} 
-          className="w-16 h-16 rounded-full mr-4"
+          className="w-16 h-16 rounded-full mr-4 bg-gray-200"
         />
         <div>
           <h3 className="text-xl font-bold text-gray-800">{ngo.name}</h3>
@@ -127,7 +127,7 @@ const FoodSharePartnership: React.FC = () => {
             </div>
             <div className="flex items-center space-x-4">
               <span className="text-sm text-gray-600">🇮🇳 India</span>
-              <select className="bg-transparent border border-gray-300 rounded px-3 py-1 text-sm">
+              <select className="bg-transparent border border-gray-300 rounded px-3 py-1 text-sm text-gray-900">
                 <option>English</option>
               </select>
             </div>
@@ -317,3 +317,5 @@ const FoodSharePartnership: React.FC = () => {
     </div>
   );
 };
+
+export default FoodSharePartnership;

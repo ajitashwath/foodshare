@@ -33,7 +33,8 @@ export class AIService {
         chat_type: 'food_donation'
       };
 
-      await supabase.table('chat_interactions').insert(chatData);
+      await supabase.from('chat_interactions').insert([chatData]);
+
       const aiResponse = this.generateAIResponse(userMessage);
 
       const responseData = {
@@ -43,7 +44,7 @@ export class AIService {
         response_type: 'food_safety_guidance'
       };
 
-      await supabase.table('ai_responses').insert(responseData);
+      await supabase.from('ai_responses').insert([responseData]);
 
       return {
         success: true,
@@ -133,7 +134,7 @@ export class AIService {
         status: 'pending'
       };
 
-      const result = await supabase.table('food_donations').insert(donationData).select();
+      const result = await supabase.from('food_donations').insert([donationData]).select();
 
       return {
         success: true,

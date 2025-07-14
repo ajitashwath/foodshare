@@ -27,19 +27,24 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     const email = body.email;
-    const ipAddress = request.ip || request.headers.get('x-forwarded-for') || 'unknown';
+
+    // Extract IP address from request headers
+    const ipAddress =
+      request.headers.get('x-forwarded-for') ||
+      request.headers.get('x-real-ip') ||
+      'unknown';
 
     // Log partner login attempt
     const partnerLogin = {
-      email: email,
+      email,
       login_attempt: new Date().toISOString(),
       ip_address: ipAddress,
       status: 'attempted'
     };
 
     const { error } = await supabase
-      .table('partner_logins')
-      .insert(partnerLogin);
+      .from('partner_logins')
+      .insert([partnerLogin]);
 
     if (error) throw error;
 
