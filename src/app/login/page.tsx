@@ -14,28 +14,28 @@ const DEMO_CREDENTIALS = {
     userData: {
       name: "Community Food Bank",
       email: "ngo@demo.com",
-      phone: "(555) 123-4567",
-      address: "123 Community St, Philadelphia, PA"
+      phone: "84659-73598",
+      address: "Jalandhar, Punjab, India - 144111"
     }
   },
   admin: {
     username: "admin@gmail.com",
     password: "admin123",
     userData: {
-      name: "Food Share Admin",
+      name: "A Singh",
       email: "admin@demo.com",
-      phone: "(555) 987-6543",
-      address: "456 Admin Plaza, Philadelphia, PA"
+      phone: "76435-84325",
+      address: "Jalandhar, Punjab, India - 144111"
     }
   },
   cafe: {
     username: "cafe@gmail.com",
     password: "cafe123",
     userData: {
-      name: "Downtown Bistro",
+      name: "Food Factory",
       email: "cafe@demo.com",
-      phone: "(555) 246-8135",
-      address: "789 Main St, Philadelphia, PA"
+      phone: "97564-53214",
+      address: "Jalandhar, Punjab, India - 144111"
     }
   }
 };
