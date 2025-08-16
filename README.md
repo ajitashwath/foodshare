@@ -10,11 +10,11 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)](https://supabase.io/)
 
-## 🌟 Our Mission
+## 🌟 Our Mission :
 
 > In India, nearly **40% of food** goes to waste while **190 million people** go hungry. At FoodShare, we believe this is a solvable problem. Our mission is to create a sustainable network to combat food waste and hunger by rescuing edible surplus food and redistributing it to local hunger relief organizations.
 
-## ✨ Key Features
+## ✨ Key Features :
 
 -   **🤖 AI-Powered Chatbot**: An intelligent assistant to guide users through food safety protocols and donation guidelines, making the process seamless and secure.
 -   **🤝 Partnership Platform**: A dedicated portal for NGOs to register, manage food requests, and track their impact, fostering a strong community of partners.
@@ -23,7 +23,7 @@
 -   **🔐 Secure Authentication**: A robust and secure login and registration system for all user types, ensuring data privacy and security.
 -   **📈 Impact Tracking**: The platform provides detailed statistics on the amount of food distributed and the number of meals provided, offering transparency and accountability.
 
-## 💻 Technology Stack
+## 💻 Technology Stack :
 
 This project is built with a modern, scalable, and efficient technology stack:
 
